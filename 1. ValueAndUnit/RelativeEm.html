@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Length</title>
+    <style>
+        /* rem */
+        html {
+            font-size: 50px; /* nilai awal untuk rem */
+        }
+
+        /* em */
+        .box {
+            font-size: 30px;    /* nilai awal untuk em */
+        }
+        .box h1 {
+            /* font-size: 1em; jika font parentnya 30 maka 1em = 30 */
+            font-size: 1rem; /* jika font rootnya 30 maka 1rem = 50 */
+        }
+        .box p {
+            /* font-size: 2em; jika font parentnya 30 maka 2em = 60 */
+            font-size: 2rem; /* jika font rootnya 30 maka 2rem = 100 */
+        }
+
+        /* ch */
+        .box-ch {
+            font-size: 16px;
+            width: 60ch; /* nilai width sebesar 60 ch (ch akan mengitung ukurannya sebesar dengan angka 0 dari font) */
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>Hello World</h1>
+        <p>Izuchii Web Developer</p>
+    </div>
+
+    <div class="box-ch">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Adipisci corporis est, vitae rerum quibusdam blanditiis quas neque mollitia iure, exercitationem dolores sit sed labore totam? Doloribus eos sint explicabo natus voluptatibus debitis earum tenetur iusto rem placeat voluptas, aliquid architecto cupiditate voluptatum mollitia error fugiat ipsam, deleniti temporibus. Quas, ut!</p>
+    </div>
+</body>
+</html>

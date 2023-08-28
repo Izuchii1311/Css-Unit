@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Em dalam mengukur length</title>
+    <style>
+        body {
+        background-color: #eee;
+        font-family: 'Roboto', sans-serif;
+        color: #333;
+        text-align: center;
+        line-height: 1.6;
+        font-weight: 300;
+        min-height: 2000px;
+    }
+
+    .container {
+        width: 80%;
+        margin: auto;
+    }
+
+    .button {
+        display: inline-block;
+        background-color: #333;
+        font-weight: 700;
+        color: white;
+        text-decoration: none;
+        text-transform: uppercase;
+
+        /* Karena tidak melakukan set pada font-size maka ukuran padding akan */
+        /* padding = 16px x 1em & 16px x 3em */
+        padding: 1em 3em;
+
+        /* Rem juka akan melakukan set pengecekan pada font size, jika tidak ada maka akan menggunakan size root */
+        /* margin = 16px x 0 & 16px x 1.5rem */
+        margin: 0 1.5rem;
+    }
+
+    .button-sm {
+        /* karena em itu melakukan stack / penumpukan maka */
+        /* 1 em x 0.5em = 16/2 yaitu 8*/
+        font-size: 0.5em;
+    }
+    .button-lg {
+        /* 1 em x 2em = 16*2 yaitu 32 */
+        font-size: 2em;
+    }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="length">
+            <h2>Title</h2>
+            <a href="" class="button">Click Me</a>
+            <a href="" class="button button-sm">Click Me</a>
+            <a href="" class="button button-lg">Click Me</a>
+        </div>
+    </div>
+</body>
+</html>

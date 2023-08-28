@@ -1,0 +1,303 @@
+Materi Front End
+
+CSS (Cascading Style Sheets) -- digunakan untuk melakukan styling pada website.
+
+
+# CSS Dasar
+    Selector = digunakan untuk memilih elemen yang akan diberikan styling.
+    Pseudo-Class = kata kunci yang digunakan untuk menentukan status / keadaan.
+            :link              // Memberikan warna awal pada link
+            :hover             // Memberikan warna ketika melakukan hover
+            :active            // Memberikan warna ketika di klik
+            :visited           // Memberikan warna sudah dikunjungi
+
+            :first-child       // child pertama dari parentnya
+            :last-child        // child terakhir dari parentnya
+            :nth-child(n)      // child dari element ke berapa?
+
+            :first-of-type     // element pertama dari parentnya
+            :last-of-type      // element terakhir dari parentnya
+
+    Spesificity = digunakan untuk menentukan mana yang lebih kuat
+        ( Inline = 1000   #id = 100   .class = 10   element = 0 )
+
+
+# CSS Layouting
+    Mengatur tata letak element (Box Model, Float, Positioning).
+
+    Display = bagaimana element menempati ruang.
+        *hanya block & inline-block yang bisa diatur ukuran-nya.
+            inline              // Biasanya nilai default di dalam element text (ke-samping).
+            block               // Biasanya nilai default element yang akan menambah Block baru di (bawah-nya).
+            inline-block        // Dibuat oleh user. Prilaku sama seperti inline namun akan berupa Block
+            none                // Menghilangkan Element/
+    Dimensi = mengatur ukuran.
+            ( width & height )
+                *px(absolute), % (relative terhadap parent), in, cm, mm, pt, pc
+    Overflow = mengatur konten jika melebihi ruang.
+            visible             // (Default) - akan ditampilkan
+            auto                // Jika melebihi ruang akan ada scroll & jika tidak maka tidak akan ada.
+            hidden              // Jika melebihi ruang akan dihilangkan lebih-nya.
+            scroll              // Akan menambahkan scroll.
+    Box-Model = representasi kotak / box.
+        *akan menambahkan ukuran dari box-nya.
+            margin              // mengatur jarak luar kotak
+                * (auto) = akan berada di tengah karena mengatur jarak dari kiri dan kanannya.
+            padding             // mengatur jarak element di dalam kotak
+            border              // mengatur border dari kotak
+                                (solid, dotted, dash, double)
+            content             // element element html.
+    Box-sizing = mengontrol ukuran dari total Box-Model yang ditambahkan agar ukuran tetap dengan nilai yang diberikan & agar tidak menambah ukuran.
+
+    HACK : CSS Reset
+            Cara 1
+            * { margin: 0; padding: 0; }
+
+            Cara 2
+            body, h1, p { margin: 0; padding: 0; }
+
+            Cara 3
+            CSS Reset yang dibuat oleh Eric Meyer
+
+    Float = untuk mengatur element di kiri / kanan dari parentnya.
+        *Jika normal-flow element akan ada di bawahnya.
+        *Jika menggunakan float akan out-of-flow maka akan berada di sebelah kiri atau kanannya.
+            none                // (default)
+            left                // bagiannya akan berada di sisi kiri dari parentnya.
+            right               // bagiannya akan berada di sisi kanan dari parentnya.
+
+    HACK : Clean Float -- Agar tidak terjadi collapse
+            Cara 1
+                Bisa menggunakan overflow: auto;
+            Cara 2
+                Bisa menggunakan clear: both;
+            Cara 3
+                Bisa menggunakan Mikro Clearfix (Search)
+
+    Position = Mengatur posisi element tanpa mempengaruhi element disekitarnya & akan naik 1 dimensi dari element lainnya.
+        *Mengatur posisi dengan menggunakan (top, left, right, bottom).
+            Static              // (default)
+            Relative            // - Akan naik 1 dimensi.
+                                   - Digunakan untuk menaikan dimensi / sebagai pembatas dari absolute
+                                   - Ruang yang ditempati sebelumnya masih ada (biasanya relative tidak digunakan untuk mengatur posisi).
+            Absolute            // - Akan naik 1 dimensi.
+                                   - Digunakan untuk mengatur posisi.
+                                   - Ukurannya akan relative terhadap posisi parentnya.
+                                        *Biasanya parent diberi posisi relative jadi saat kita mengatur posisi absolute contentnya tidak melebihi / diluar parentnya
+                                        *top:0; left:0; maka posisi akan ada di atas kiri
+            Fixed               // Akan selalu bergerak secara relative dengan window browsernya.
+
+    z-index = mengontrol tumpukan/stacking/layer.
+        *Jika diberi nilai angka positif maka akan diatasnya, jika negatif maka akan ada di bawahnya.
+
+
+# CSS 3
+    Border-radius = Mengatur ukuran sisi radius box / merubah menjadi tumpul.
+        *jika setengah dari lebar & tingginya akan jadi lingkaran.
+
+    Opacity = Transparansi pada element. Jika melakukan di dalam element lagi maka transparansi akan saling mewarisi.
+
+    Rgba = Bisa digunakan untuk memberikan transparansi pada warna.
+
+    Box-shadow = Digunakan untuk memberikann bayangan pada element html.
+        *Contoh multiple-shadow
+            box-shadow:
+                inset -15px 15px 15px 50px rgba(0, 0, 0, 0.3),
+                -15px 15px 15px 50px rgba(0, 0, 0, 0.3);
+
+            *<inset> = (Opsional) Membuat bayangan di dalam kotak
+            <x-offset> = untuk mengatur jarak bayangan horizontal.
+            <y-offset> = untuk mengatur jarak bayangan vertikal.
+            <blur> = untuk memberikan blur.
+            *<spread> = (Opsional) Size shadow
+            <color> = untuk memberikan warna.
+
+    Text-shadow = Digunakan untuk memberikan bayangan pada text.
+            <x-offset> = untuk mengatur jarak bayangan horizontal.
+            <y-offset> = untuk mengatur jarak bayangan vertikal.
+            <blur> = untuk memberikan blur.
+            <color> = untuk memberikan warna.
+
+    Linear-gradient = gradasi secara garis lurus.
+        *value untuk property background-image.
+            <sudut> = Menggunakan deg.
+            <arah> = untuk menentukan arah dari gradient.
+                to bottom, to left, to right, to top.
+                to left top, to left bottom, to left right, to right bottom.
+            <warna-awal>
+            <warna-akhir>
+
+        *color stop = bobot untuk warna.
+        dengan menambahkan code berikut "red 20%".
+
+    Radian Gradient = gradasi warna melingkar.
+        *value untuk property background-image.
+            <tipe> = exlips / circle.
+            <jangkauan> = jarak dari pusat gradients ke sisi terluarnya.
+                closest-corner = jarak dari titik pusat gradient ke *sudut terdekat* element.
+                closest-side = jarak dari titik pusat gradient ke *sisi terdekat* element.
+                farthest-corner = jarak dari titik pusat gradient ke *sudut terjauh* gradient.
+                farthest-side = jarak dari titik pusat gradient ke *sisi terjauh* gradient.
+             <posisi-y> , (top, center, bottom, px)
+             <posisi-x>, (left, center, right, px)
+            <warna-awal>
+            <warna-akhir>
+
+    Font-face = digunakan untuk mengelola font oleh css3.
+        *jika menggunakan ttf membuat website lebih lambat gunakan font khusus web dengan format woff.
+        download terlebih dahulu fontnya.
+        *web-font-generator
+
+    Vendor-prefix = teknik digunakan agar sintak yang dibuat kompatibel di semua browser.
+        *digunakan karena tidak semua browser support css3.
+            -webkit-<property-css3> = (Chrome, Opera New, Safari)
+            -moz-<property-css3> = (Firefox)
+            -ms-<property-css3> = (Internet Explorer)
+            -o-<property-css3> = (Opera old)
+
+        Property yang butuh prefix https://shouldiprefix.com/ atau caniuse.com atau pleeease.io/play/
+
+    Filter = memberikan filter pada element html.
+            1. blur
+            2. brightness
+            3. contrass
+            4. saturate
+            5. grayscale
+            6. sepia
+            7. hue-rotate
+            8. invert
+            9. opacity
+            10. drop-shadow
+
+    Transform = memanipulasi format visual dari element yang dimiliki.
+        *transformasi 2D & 3D
+            scale = memperbesar / memperkecil.
+            rotate = memutar.
+            skew = membuat condong / miring.
+            translate = mengubah posisi.
+
+    Transition = memungkinkan kita dapat merubah properti secara halus.
+        *transition vs. animation
+        *transisi = jika ada keadaan awal dan keadaan akhir, namun pergerakannya disebut dengan animasi.
+        *animasi = pergerakannya bisa lebih dari 2 keadaan(keyframe).
+            transition:
+                [property] = property html yang akan diberikan transisi
+                <durasi> = durasi transisi
+                [fungsi] = memberikan timing function.
+                    ease
+                    ease-in
+                    ease-out
+                    ease-in-out
+                    linear
+                    cubic-bezier(w,x,y,x)
+                [delay] = waktu tunggu sebelum memberikan durasi.
+            transition: margin-left 3s ease-in;
+
+    Animation = melakukan animasi.
+        *memiliki keyframe, bisa dengan form & to atau dengan menggunakan %.
+            @keyframes [name] {
+                from {
+                    [property-css3]
+                }
+                to {
+                    [property-css3]
+                }
+            }
+
+            animation:
+                [name] = nama animasi yang harus sama dengan keyframe.
+                [duration] = durasi animasi
+                [timing-function] = timing function
+                    ease
+                    ease-in
+                    ease-out
+                    ease-in-out
+                    linear
+                    cubic-bezier(w,x,y,x)
+                [delay] = waktu tunggu sebelum memberikan durasi.
+                [iteration-count] = mau berapa kali diulangnya (angka | infinite).
+                [direction] = animasi akan berjalan secara (normal | reverse | alternate | alternate-reverse).
+                [fill-mode] = menentukan akhir dari transisinya, agar tidak loncat ke posisi awal (none | forwards | backwards | both).
+                [play-state] = animasi berjalan (running | paused).
+
+
+# CSS Unit
+
+    CSS Value & Unit = nilai & satuan apa saja yang bisa diberikan ke dalam css.
+        - integer = bilangan bulat (hanya angka).
+            contohnya : z-index: 99;
+                        order: 3;
+        - number = bilangan angka boleh pecahan.
+            contohnya : opacity: 0.7;
+                        transform: scale(2.5);
+        - percentage = mempresentasikan dari nilai tertentu dan relatif terhadap element lain.
+            contohnya : width: 80%;
+        - dimension = number yang memiliki satuan dibelakangnya.
+            - length
+                - Absolute length = fixed.
+                    contohnya : px (pixel)
+                                pt (point)
+                                pc (pica)
+                                cm (centimeter)
+                                mm (milimeter)
+                                in (inches)
+                - Relative length = relative terhadap sesuatu.
+                    contohnya : % (relatif terhadap ukuran element parent)
+                                em (relatif terhadap ukuran font yang digunakan)
+                                    *2 em = 2x ukuran font-size dari element parent pembungkusnya
+                                     jika tidak ada font size di element pembungkusnya maka nilai default font html = 16px
+                                     Em akan mengalami penumpukan ukuran (digunakan untuk yang lain seperti menentukan length dari element)
+                                rem (relatif terhadap ukuran font "root" / html)
+                                    *2 rem = 2x ukuran font-size dari element parent pembungkusnya
+                                     jika tidak ada font size di element pembungkusnya maka nilai default html = 16px
+                                     Dia tidak akan terpengaruh / tidak akan mengalami penumpukan (biasanya digunakan untuk font)
+
+                                     *em dan rem juga bisa digunakan dalam mengatur lenght seperti padding margin dan ukurannya akan dikalikan dengan font-size parent-nya.
+                                ch (relatif terhadap karakter 0 dari font yang digunakan)
+
+                                vh % (relatif terhadap tinggi veiwport)
+                                    *satuannya adalah %, maka 100 vh akan memenuhi sebanyak 100% dari viewportnya / layar saat pertama kali dibuka
+                                     jika ada kontent baru, maka akan tampil di bawahnya jika ukurannya sudah melewati 100% dari viewport yang tadi
+                                vw % (relatif terhadap lebar viewport)
+
+                                vmin % (relatif terhadap dimensi terkecil viewport)
+                                    *vmin akan mengambil ukuran viewport yang lebih kecilnya
+                                     misalkan di hp vmin itu lebar nya jadi ukurannya akan menyesuaikan dengan lebar ukuran handphone
+                                    *vmax akan mengambil ukuran viewport yang lebih besarnya
+                                     misalkan di hp vmax itu tinggi nya jadi ukuran lebarnya akan menyesuaikan dengann tinggi dari handphonenya
+                                    *karena jika viewport hp itu biasnya tinggi layarnya (vmax) dan lebarnya pendek (vmin)
+                                vmax % (relatif terhadap dimensi terbesar viewport)
+                                    *viewport = lebar atau ukuran dari layar yang digunakan.
+            - angle = sudut.
+                contohnya : rotate: (30deg);                (derajat).
+                            rotate: (33.3rad);              (radiant).
+                            rotate: (0.523333333grad);      (gradiant).
+                            rotate: (0.8333333turn);        (putaran).
+            - time = waktu.
+                contohnya : transition: 300ms;
+                            transition: 0.3s;
+            - resolution = resolusi dari tampilan website / biasanya digunakan saat ingin mencetak sesuatu.
+                contohnya : dpi (dot per inch).
+                            dpcm (dot per centimeter).
+                            dppx (dot per pixel).
+
+                            @media print and (min-resolution: 300dpi) { ... }
+
+    Function di dalam css yaitu calc()
+        calc(), sebuah fungsi pada css yang memungkinkan kita untuk melakukan operasi matematika pada nilai dari sebuah properti.
+            nilai yang bisa diberikan fungsi calc()
+                lenght (px, pt, cm ...), angle (deg, rad, turn ...), time (ms, s), percentage (%), angka (opacity / z-index).
+                contoh :
+                    width: calc(20px + 30px);       pertambahan
+                    width: calc(20% - 30px);        pengurangan
+                    width: calc(20% * 3);           perkalian *syaratnya harus ada nilai yang tidak memiliki satuan.
+                    width: calc(20% / 3);           pembagian *syaratnya harus ada nilai yang tidak memiliki satuan.
+
+                    *harus diberikan spasi antara operatornya
+
+                    calc nesting
+                    width: calc(calc(100% / 3) - calc(1rem * 2));
+                    width: calc((100% / 3) - (1rem * 2));
+                    width: calc(100% / 3 - 1rem * 2);
+
+

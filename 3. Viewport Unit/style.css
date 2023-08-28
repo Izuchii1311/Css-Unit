@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    line-height: 1.8em;
+}
+
+header {
+    background-color: #ccc;
+    background-image: url(img/Yae\ Miko.png);
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    /* height: 500px;      Tingginya tidak akan relative */
+    /* height: 100%;       Tingginya akan 100% memenuhi pembungkusnya */
+    height: 100vh;      /* Tingginya akan seukuran dengan height dari viewportnya */
+}
+
+h1 {
+    margin: auto;
+    /* font-size: 4rem;   Default */
+    /* font-size: 4vw;         4% dari lebar viewport */
+    font-size: 4vmax;       /* 4% dari tinggi viewport maksimal layarnya, */
+    line-height: 1.2em;
+    color: white;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+    text-align: center;
+}
+
+section {
+    margin: 30px auto;
+    width: 80%;
+}
+
+section.detail {
+    font-size: 1.4rem;
+    text-align: center;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    padding: 0.5em 0;
+    margin-bottom: 2em;
+    color: #333;
+}
+
+section p {
+    font-size: 1.2em;
+    margin-bottom: 1em;
+    text-indent: 1em;
+}
